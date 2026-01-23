@@ -30,7 +30,7 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 
-# Define Models
+# Define Models (keeping legacy for backward compatibility)
 class StatusCheck(BaseModel):
     model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
     
@@ -40,6 +40,19 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+
+# Dependency to inject db into route handlers
+async def get_database():
+    return db
+
+
+# Add db to request state for route handlers
+@app.middleware("http")
+async def db_session_middleware(request: Request, call_next):
+    request.state.db = db
+    response = await call_next(request)
+    return response
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
