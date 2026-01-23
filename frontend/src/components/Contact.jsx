@@ -1,28 +1,46 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Linkedin, Github, MapPin, Send } from 'lucide-react';
-import { portfolioData } from '../mock';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from '../hooks/use-toast';
+import axios from 'axios';
 
-const Contact = () => {
-  const { personal } = portfolioData;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const Contact = ({ personal }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(`${API}/contact`, formData);
+      
+      toast({
+        title: "Message Sent!",
+        description: response.data.message || "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: error.response?.data?.detail || "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -113,6 +131,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     className="bg-[#0A192F] border-[#64FFDA]/30 text-white focus:border-[#64FFDA]"
                     placeholder="Your name"
                   />
@@ -128,6 +147,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     className="bg-[#0A192F] border-[#64FFDA]/30 text-white focus:border-[#64FFDA]"
                     placeholder="your.email@example.com"
                   />
@@ -142,6 +162,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     rows={5}
                     className="bg-[#0A192F] border-[#64FFDA]/30 text-white focus:border-[#64FFDA] resize-none"
                     placeholder="Your message..."
@@ -150,10 +171,11 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/90 py-6 text-base font-semibold"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/90 py-6 text-base font-semibold disabled:opacity-50"
                 >
                   <Send size={18} className="mr-2" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>
