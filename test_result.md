@@ -101,3 +101,83 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the backend endpoints for Bikramjit Singh's portfolio website including GET /api/portfolio, POST /api/contact, and GET /api/contact/messages"
+
+backend:
+  - task: "Portfolio Data Retrieval API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/portfolio.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ GET /api/portfolio endpoint working perfectly. Returns complete portfolio data with all required sections: personal info (name: Bikramjit Singh, title, contact details), about section with highlights, skills (11 programming, 8 software, 8 techniques), experience (3 positions), projects (6 projects with images), and education (BMath Honors in Statistics at University of Waterloo). All data structure validation passed."
+
+  - task: "Contact Form Submission API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/contact.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ POST /api/contact endpoint working correctly. Successfully accepts valid contact form data (name, email, message) and returns success response with message ID. Tested with realistic data: name='Bikramjit Test User', email='bikramjit.test@example.com', comprehensive message about data analytics opportunities."
+
+  - task: "Contact Form Validation"
+    implemented: true
+    working: true
+    file: "/app/backend/models/contact_message.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "❌ Initial validation testing failed with 520 errors due to improper FastAPI validation setup in server.py"
+        - working: true
+          agent: "testing"
+          comment: "✅ FIXED: Updated server.py to use proper FastAPI validation with ContactMessageCreate model instead of dict. Now correctly rejects invalid email formats and missing required fields with 422 status codes. Validation working as expected."
+
+  - task: "Contact Messages Retrieval API"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/contact.py"
+    stuck_count: 1
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "❌ Initial testing failed with 520 errors due to MongoDB ObjectId serialization issues in JSON response"
+        - working: true
+          agent: "testing"
+          comment: "✅ FIXED: Updated get_all_messages function to exclude MongoDB _id field from query results to avoid ObjectId serialization issues. GET /api/contact/messages now returns proper JSON array of messages with all required fields (name, email, message, created_at). Successfully retrieved 2 messages including test message."
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Portfolio Data Retrieval API"
+    - "Contact Form Submission API"
+    - "Contact Form Validation"
+    - "Contact Messages Retrieval API"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "✅ BACKEND TESTING COMPLETE: All 4 backend endpoints tested successfully. Fixed 2 critical issues: (1) Contact form validation by updating server.py to use proper FastAPI validation, (2) Contact messages retrieval by excluding MongoDB ObjectId fields. All endpoints now working correctly with proper error handling and data validation. Portfolio API returns complete data structure, contact form accepts/validates submissions properly, and messages retrieval works without serialization errors. 100% test success rate (11/11 tests passed)."
