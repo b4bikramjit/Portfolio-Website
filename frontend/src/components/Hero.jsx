@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 const Hero = ({ personal }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
   const [displayedText, setDisplayedText] = useState({ intro: '', name: '', title: '' });
 
   const scrollToSection = (id) => {
@@ -15,12 +15,9 @@ const Hero = ({ personal }) => {
     }
   };
 
-  // Typewriter effect
+  // Typewriter effect - runs once
   useEffect(() => {
-    if (!isInView) {
-      setDisplayedText({ intro: '', name: '', title: '' });
-      return;
-    }
+    if (!isInView) return;
 
     const intro = "Hi, my name is";
     const name = personal.name;
