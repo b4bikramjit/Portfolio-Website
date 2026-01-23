@@ -1,13 +1,11 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from models.contact_message import ContactMessage, ContactMessageCreate
 import logging
 
-router = APIRouter(prefix="/api", tags=["contact"])
 logger = logging.getLogger(__name__)
 
 
-@router.post("/contact", response_model=dict, status_code=status.HTTP_201_CREATED)
 async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIOMotorDatabase):
     """
     Submit a contact form message
@@ -39,7 +37,6 @@ async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIO
         )
 
 
-@router.get("/contact/messages", response_model=list)
 async def get_all_messages(db: AsyncIOMotorDatabase, skip: int = 0, limit: int = 50):
     """
     Get all contact messages (Admin endpoint - can be protected later)
@@ -53,3 +50,4 @@ async def get_all_messages(db: AsyncIOMotorDatabase, skip: int = 0, limit: int =
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to fetch messages"
         )
+
