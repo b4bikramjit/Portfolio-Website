@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="py-8 border-t border-[#8892B0]/20">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[#8892B0] text-sm">
+          <div className="text-[#A8B2D1] text-sm">
             © {currentYear} {personal.name}. Built with data and passion.
           </div>
 
@@ -19,7 +19,7 @@ const Footer = () => {
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#8892B0] hover:text-[#64FFDA] transition-colors"
+              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
             >
               <Github size={20} />
             </a>
@@ -27,13 +27,13 @@ const Footer = () => {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#8892B0] hover:text-[#64FFDA] transition-colors"
+              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
             >
               <Linkedin size={20} />
             </a>
             <a
               href={`mailto:${personal.email}`}
-              className="text-[#8892B0] hover:text-[#64FFDA] transition-colors"
+              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
             >
               <Mail size={20} />
             </a>
