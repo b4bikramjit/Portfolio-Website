@@ -3,70 +3,77 @@
     "test": "Personal Info Validation",
     "success": true,
     "details": "All personal fields present. Name: Bikramjit Singh",
-    "timestamp": "2026-01-23T06:01:18.162581",
+    "timestamp": "2026-01-23T06:02:19.717832",
     "response_data": null
   },
   {
     "test": "Skills Structure Validation",
     "success": true,
     "details": "Skills loaded: 11 programming, 8 software, 8 techniques",
-    "timestamp": "2026-01-23T06:01:18.162602",
+    "timestamp": "2026-01-23T06:02:19.717853",
     "response_data": null
   },
   {
     "test": "Experience Data Validation",
     "success": true,
     "details": "Found 3 experience entries",
-    "timestamp": "2026-01-23T06:01:18.162607",
+    "timestamp": "2026-01-23T06:02:19.717858",
     "response_data": null
   },
   {
     "test": "Projects Data Validation",
     "success": true,
     "details": "Found 6 project entries",
-    "timestamp": "2026-01-23T06:01:18.162611",
+    "timestamp": "2026-01-23T06:02:19.717862",
     "response_data": null
   },
   {
     "test": "Education Data Validation",
     "success": true,
     "details": "Education complete: BMath Honors in Statistics at University of Waterloo",
-    "timestamp": "2026-01-23T06:01:18.162615",
+    "timestamp": "2026-01-23T06:02:19.717866",
     "response_data": null
   },
   {
     "test": "Portfolio Endpoint",
     "success": true,
     "details": "Portfolio data retrieved successfully with all required sections",
-    "timestamp": "2026-01-23T06:01:18.162618",
+    "timestamp": "2026-01-23T06:02:19.717870",
     "response_data": null
   },
   {
     "test": "Contact Form - Valid Data",
     "success": true,
-    "details": "Message submitted successfully. ID: 69730eae4379da1a9f08bb0e",
-    "timestamp": "2026-01-23T06:01:18.205242",
+    "details": "Message submitted successfully. ID: 69730eeb0331d6fb337ad4a3",
+    "timestamp": "2026-01-23T06:02:19.736079",
     "response_data": null
   },
   {
     "test": "Contact Form - Invalid Email",
-    "success": false,
-    "details": "Unexpected status code 520: Internal Server Error",
-    "timestamp": "2026-01-23T06:01:18.219614",
-    "response_data": "Internal Server Error"
+    "success": true,
+    "details": "Correctly rejected invalid email format with 422 status",
+    "timestamp": "2026-01-23T06:02:19.750201",
+    "response_data": null
   },
   {
     "test": "Contact Form - Missing Fields",
-    "success": false,
-    "details": "Unexpected status code 520: Internal Server Error",
-    "timestamp": "2026-01-23T06:01:18.258171",
-    "response_data": "Internal Server Error"
+    "success": true,
+    "details": "Correctly rejected incomplete data with 422 status",
+    "timestamp": "2026-01-23T06:02:19.799263",
+    "response_data": null
   },
   {
     "test": "Contact Messages Retrieval",
-    "success": false,
-    "details": "HTTP 520: Internal Server Error",
-    "timestamp": "2026-01-23T06:01:18.268914",
-    "response_data": "Internal Server Error"
+    "success": true,
+    "details": "Retrieved 2 messages, including our test message",
+    "timestamp": "2026-01-23T06:02:19.812496",
+    "response_data": null
+  },
+  {
+    "test": "Message Structure Validation",
+    "success": true,
+    "details": "Message structure contains all required fields",
+    "timestamp": "2026-01-23T06:02:19.812522",
+    "response_data": null
   }
 ]
