@@ -1,0 +1,72 @@
+[
+  {
+    "test": "Personal Info Validation",
+    "success": true,
+    "details": "All personal fields present. Name: Bikramjit Singh",
+    "timestamp": "2026-01-23T06:01:18.162581",
+    "response_data": null
+  },
+  {
+    "test": "Skills Structure Validation",
+    "success": true,
+    "details": "Skills loaded: 11 programming, 8 software, 8 techniques",
+    "timestamp": "2026-01-23T06:01:18.162602",
+    "response_data": null
+  },
+  {
+    "test": "Experience Data Validation",
+    "success": true,
+    "details": "Found 3 experience entries",
+    "timestamp": "2026-01-23T06:01:18.162607",
+    "response_data": null
+  },
+  {
+    "test": "Projects Data Validation",
+    "success": true,
+    "details": "Found 6 project entries",
+    "timestamp": "2026-01-23T06:01:18.162611",
+    "response_data": null
+  },
+  {
+    "test": "Education Data Validation",
+    "success": true,
+    "details": "Education complete: BMath Honors in Statistics at University of Waterloo",
+    "timestamp": "2026-01-23T06:01:18.162615",
+    "response_data": null
+  },
+  {
+    "test": "Portfolio Endpoint",
+    "success": true,
+    "details": "Portfolio data retrieved successfully with all required sections",
+    "timestamp": "2026-01-23T06:01:18.162618",
+    "response_data": null
+  },
+  {
+    "test": "Contact Form - Valid Data",
+    "success": true,
+    "details": "Message submitted successfully. ID: 69730eae4379da1a9f08bb0e",
+    "timestamp": "2026-01-23T06:01:18.205242",
+    "response_data": null
+  },
+  {
+    "test": "Contact Form - Invalid Email",
+    "success": false,
+    "details": "Unexpected status code 520: Internal Server Error",
+    "timestamp": "2026-01-23T06:01:18.219614",
+    "response_data": "Internal Server Error"
+  },
+  {
+    "test": "Contact Form - Missing Fields",
+    "success": false,
+    "details": "Unexpected status code 520: Internal Server Error",
+    "timestamp": "2026-01-23T06:01:18.258171",
+    "response_data": "Internal Server Error"
+  },
+  {
+    "test": "Contact Messages Retrieval",
+    "success": false,
+    "details": "HTTP 520: Internal Server Error",
+    "timestamp": "2026-01-23T06:01:18.268914",
+    "response_data": "Internal Server Error"
+  }
+]
