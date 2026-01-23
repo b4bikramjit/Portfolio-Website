@@ -21,10 +21,10 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
             {personal.name}
           </h1>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#8892B0] mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#A8B2D1] mb-6">
             {personal.title}
           </h2>
-          <p className="text-[#8892B0] text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-[#A8B2D1] text-lg md:text-xl mb-8 max-w-2xl mx-auto">
             {personal.tagline}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
