@@ -1,12 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Card } from './ui/card';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 
 const About = ({ about }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
