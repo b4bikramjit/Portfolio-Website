@@ -42,7 +42,8 @@ async def get_all_messages(db: AsyncIOMotorDatabase, skip: int = 0, limit: int =
     Get all contact messages (Admin endpoint - can be protected later)
     """
     try:
-        messages = await db.contact_messages.find().sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
+        # Exclude MongoDB's _id field from the query results to avoid ObjectId serialization issues
+        messages = await db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
         return messages
     except Exception as e:
         logger.error(f"Error fetching messages: {str(e)}")
