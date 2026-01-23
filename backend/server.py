@@ -90,11 +90,9 @@ async def get_portfolio_endpoint():
     return await get_portfolio(db)
 
 @app.post("/api/contact")
-async def create_contact_endpoint(message_data: dict):
+async def create_contact_endpoint(message_data: ContactMessageCreate):
     from routes.contact import create_contact_message
-    from models.contact_message import ContactMessageCreate
-    message = ContactMessageCreate(**message_data)
-    return await create_contact_message(message, db)
+    return await create_contact_message(message_data, db)
 
 @app.get("/api/contact/messages")
 async def get_messages_endpoint(skip: int = 0, limit: int = 50):
