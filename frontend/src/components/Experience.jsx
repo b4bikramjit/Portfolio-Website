@@ -31,7 +31,7 @@ const Experience = () => {
                       {exp.company}
                     </p>
                   </div>
-                  <div className="flex flex-col md:items-end gap-1 text-[#8892B0] text-sm">
+                  <div className="flex flex-col md:items-end gap-1 text-[#A8B2D1] text-sm">
                     <div className="flex items-center gap-2">
                       <Calendar size={16} />
                       <span>{exp.period}</span>
@@ -45,7 +45,7 @@ const Experience = () => {
 
                 <ul className="space-y-3">
                   {exp.achievements.map((achievement, idx) => (
-                    <li key={idx} className="text-[#8892B0] flex gap-3">
+                    <li key={idx} className="text-[#A8B2D1] flex gap-3">
                       <span className="text-[#64FFDA] mt-1.5">▹</span>
                       <span>{achievement}</span>
                     </li>
