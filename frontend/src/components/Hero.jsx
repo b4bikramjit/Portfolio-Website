@@ -11,13 +11,67 @@ const Hero = ({ personal }) => {
     }
   };
 
+  // Flickering animation that stabilizes
+  const flickerVariants = {
+    hidden: { 
+      opacity: 0,
+    },
+    flicker: {
+      opacity: [0, 0.2, 0, 0.8, 0.3, 1, 0.5, 1, 0.8, 1],
+      transition: {
+        duration: 1.2,
+        times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1],
+        ease: "easeInOut"
+      }
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
+  // Glitch effect for name
+  const glitchVariants = {
+    hidden: { 
+      opacity: 0,
+      x: 0
+    },
+    glitch: {
+      opacity: [0, 1, 0, 1, 0.5, 1],
+      x: [0, -5, 5, -3, 3, 0],
+      filter: [
+        "blur(0px)",
+        "blur(2px)",
+        "blur(0px)",
+        "blur(3px)",
+        "blur(1px)",
+        "blur(0px)"
+      ],
+      transition: {
+        duration: 0.8,
+        times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+        ease: "easeInOut"
+      }
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.3,
+        delayChildren: 0.2
       }
     }
   };
@@ -43,22 +97,33 @@ const Hero = ({ personal }) => {
         animate="visible"
       >
         <div className="max-w-4xl mx-auto">
+          {/* Flickering intro text */}
           <motion.p 
-            variants={itemVariants}
+            variants={flickerVariants}
+            initial="hidden"
+            animate={["flicker", "visible"]}
             className="text-[#64FFDA] text-sm md:text-base mb-4 font-mono"
           >
             Hi, my name is
           </motion.p>
           
+          {/* Glitching name */}
           <motion.h1 
-            variants={itemVariants}
+            variants={glitchVariants}
+            initial="hidden"
+            animate={["glitch", "visible"]}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4"
+            style={{ textShadow: "0 0 10px rgba(100, 255, 218, 0.3)" }}
           >
             {personal.name}
           </motion.h1>
           
+          {/* Flickering title */}
           <motion.h2 
-            variants={itemVariants}
+            variants={flickerVariants}
+            initial="hidden"
+            animate={["flicker", "visible"]}
+            transition={{ delay: 0.5 }}
             className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#A8B2D1] mb-6"
           >
             {personal.title}
