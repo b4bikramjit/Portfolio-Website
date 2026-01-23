@@ -1,11 +1,8 @@
 import React from 'react';
 import { MapPin, Calendar } from 'lucide-react';
-import { portfolioData } from '../mock';
 import { Card } from './ui/card';
 
-const Experience = () => {
-  const { experience } = portfolioData;
-
+const Experience = ({ experience }) => {
   return (
     <section id="experience" className="py-20 relative">
       <div className="container mx-auto px-6">

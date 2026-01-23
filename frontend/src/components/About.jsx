@@ -1,10 +1,7 @@
 import React from 'react';
-import { portfolioData } from '../mock';
 import { Card } from './ui/card';
 
-const About = () => {
-  const { about } = portfolioData;
-
+const About = ({ about }) => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">

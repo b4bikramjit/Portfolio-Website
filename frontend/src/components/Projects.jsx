@@ -1,13 +1,10 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
-import { portfolioData } from '../mock';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
-const Projects = () => {
-  const { projects } = portfolioData;
-
+const Projects = ({ projects }) => {
   return (
     <section id="projects" className="py-20 relative">
       <div className="container mx-auto px-6">
