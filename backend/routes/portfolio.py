@@ -1,13 +1,11 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from models.portfolio import Portfolio
 import logging
 
-router = APIRouter(prefix="/api", tags=["portfolio"])
 logger = logging.getLogger(__name__)
 
 
-@router.get("/portfolio", response_model=dict)
 async def get_portfolio(db: AsyncIOMotorDatabase):
     """
     Get complete portfolio data
@@ -39,7 +37,6 @@ async def get_portfolio(db: AsyncIOMotorDatabase):
         )
 
 
-@router.put("/portfolio", response_model=dict)
 async def update_portfolio(portfolio: Portfolio, db: AsyncIOMotorDatabase):
     """
     Update portfolio data (Admin endpoint - can be protected later)
