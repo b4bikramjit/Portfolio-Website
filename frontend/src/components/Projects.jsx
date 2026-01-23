@@ -45,7 +45,7 @@ const Projects = () => {
                   {/* Metrics */}
                   <div className="mb-4 space-y-1">
                     {Object.entries(project.metrics).map(([key, value]) => (
-                      <div key={key} className="text-[#64FFDA] text-sm font-mono">
+                      <div key={key} className="text-[#64FFDA] text-base font-mono font-semibold">
                         {value}
                       </div>
                     ))}
