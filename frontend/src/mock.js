@@ -105,6 +105,7 @@ export const portfolioData = {
         accuracy: "74% R²",
         error: "25% MAPE"
       },
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
       link: "#",
       github: "#"
     },
@@ -117,6 +118,7 @@ export const portfolioData = {
         dataPoints: "260K+",
         insights: "Team & Player Metrics"
       },
+      image: "https://images.unsplash.com/photo-1748609160056-7b95f30041f0",
       link: "#",
       github: "#"
     },
@@ -129,6 +131,7 @@ export const portfolioData = {
         accuracy: "98%",
         recall: "98%"
       },
+      image: "https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91",
       link: "#",
       github: "#"
     },
@@ -141,6 +144,7 @@ export const portfolioData = {
         accuracy: "87%",
         f1Score: "0.85"
       },
+      image: "https://images.unsplash.com/photo-1762279389083-abf71f22d338",
       link: "#",
       github: "#"
     },
@@ -153,6 +157,7 @@ export const portfolioData = {
         segments: "5 Clusters",
         improvement: "35% CTR"
       },
+      image: "https://images.unsplash.com/photo-1759661990336-51bd4b951fea",
       link: "#",
       github: "#"
     },
@@ -165,6 +170,7 @@ export const portfolioData = {
         accuracy: "92%",
         horizon: "6 Months"
       },
+      image: "https://images.pexels.com/photos/17483907/pexels-photo-17483907.png",
       link: "#",
       github: "#"
     }
