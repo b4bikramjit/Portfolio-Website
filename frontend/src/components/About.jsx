@@ -32,7 +32,7 @@ const About = () => {
                   key={index}
                   className="bg-[#112240] border-[#64FFDA]/20 p-6 hover:border-[#64FFDA] transition-all duration-300 hover:transform hover:scale-105"
                 >
-                  <div className="text-3xl font-bold text-[#64FFDA] mb-2">
+                  <div className="text-4xl font-bold text-[#64FFDA] mb-2">
                     {highlight.value}
                   </div>
                   <div className="text-[#A8B2D1] text-sm">
