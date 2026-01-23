@@ -1,11 +1,8 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
-import { portfolioData } from '../mock';
 import { Button } from './ui/button';
 
-const Hero = () => {
-  const { personal } = portfolioData;
-
+const Hero = ({ personal }) => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
