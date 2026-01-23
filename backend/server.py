@@ -54,7 +54,7 @@ async def db_session_middleware(request: Request, call_next):
     response = await call_next(request)
     return response
 
-# Add your routes to the router instead of directly to app
+# Legacy routes (keeping for backward compatibility)
 @api_router.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -83,8 +83,27 @@ async def get_status_checks():
     
     return status_checks
 
-# Include the router in the main app
+
+# Include the main API router
 app.include_router(api_router)
+
+# Include new route modules
+@app.get("/api/portfolio")
+async def get_portfolio_endpoint():
+    from routes.portfolio import get_portfolio
+    return await get_portfolio(db)
+
+@app.post("/api/contact")
+async def create_contact_endpoint(message_data: dict):
+    from routes.contact import create_contact_message
+    from models.contact_message import ContactMessageCreate
+    message = ContactMessageCreate(**message_data)
+    return await create_contact_message(message, db)
+
+@app.get("/api/contact/messages")
+async def get_messages_endpoint(skip: int = 0, limit: int = 50):
+    from routes.contact import get_all_messages
+    return await get_all_messages(db, skip, limit)
 
 app.add_middleware(
     CORSMiddleware,
