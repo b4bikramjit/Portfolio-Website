@@ -10,10 +10,6 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
-# Import route modules
-from routes.portfolio import router as portfolio_router
-from routes.contact import router as contact_router
-
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
