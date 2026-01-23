@@ -1,9 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = ({ personal }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const [displayedText, setDisplayedText] = useState({ intro: '', name: '', title: '' });
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -11,219 +15,110 @@ const Hero = ({ personal }) => {
     }
   };
 
-  // Neon tube lighting up effect
-  const neonCharVariants = {
-    hidden: { 
-      opacity: 0,
-      textShadow: "0 0 0px rgba(100, 255, 218, 0)",
-      filter: "brightness(0.3) blur(2px)"
-    },
-    flicker: {
-      opacity: [0, 0.3, 0.1, 0.5, 0.2, 0.8, 0.4, 1],
-      textShadow: [
-        "0 0 0px rgba(100, 255, 218, 0)",
-        "0 0 5px rgba(100, 255, 218, 0.3)",
-        "0 0 2px rgba(100, 255, 218, 0.2)",
-        "0 0 10px rgba(100, 255, 218, 0.5)",
-        "0 0 5px rgba(100, 255, 218, 0.4)",
-        "0 0 15px rgba(100, 255, 218, 0.7)",
-        "0 0 10px rgba(100, 255, 218, 0.6)",
-        "0 0 20px rgba(100, 255, 218, 0.8), 0 0 30px rgba(100, 255, 218, 0.5), 0 0 40px rgba(100, 255, 218, 0.3)"
-      ],
-      filter: [
-        "brightness(0.3) blur(2px)",
-        "brightness(0.6) blur(1px)",
-        "brightness(0.4) blur(1.5px)",
-        "brightness(0.8) blur(0.5px)",
-        "brightness(0.6) blur(1px)",
-        "brightness(1) blur(0px)",
-        "brightness(0.9) blur(0.2px)",
-        "brightness(1.2) blur(0px)"
-      ],
-      transition: {
-        duration: 0.6,
-        times: [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1],
-        ease: "easeOut"
-      }
-    },
-    visible: {
-      opacity: 1,
-      textShadow: "0 0 20px rgba(100, 255, 218, 0.8), 0 0 30px rgba(100, 255, 218, 0.5), 0 0 40px rgba(100, 255, 218, 0.3), 0 0 50px rgba(100, 255, 218, 0.2)",
-      filter: "brightness(1.2) blur(0px)",
-      transition: {
-        duration: 0.3
-      }
+  // Typewriter effect
+  useEffect(() => {
+    if (!isInView) {
+      setDisplayedText({ intro: '', name: '', title: '' });
+      return;
     }
-  };
 
-  // Name gets extra bright neon effect
-  const neonNameVariants = {
-    hidden: { 
-      opacity: 0,
-      textShadow: "0 0 0px rgba(100, 255, 218, 0)",
-      filter: "brightness(0.3) blur(3px)"
-    },
-    flicker: {
-      opacity: [0, 0.2, 0.05, 0.4, 0.15, 0.7, 0.3, 1],
-      textShadow: [
-        "0 0 0px rgba(100, 255, 218, 0)",
-        "0 0 8px rgba(100, 255, 218, 0.4)",
-        "0 0 3px rgba(100, 255, 218, 0.2)",
-        "0 0 15px rgba(100, 255, 218, 0.6)",
-        "0 0 8px rgba(100, 255, 218, 0.4)",
-        "0 0 25px rgba(100, 255, 218, 0.8)",
-        "0 0 15px rgba(100, 255, 218, 0.7)",
-        "0 0 30px rgba(100, 255, 218, 1), 0 0 50px rgba(100, 255, 218, 0.7), 0 0 70px rgba(100, 255, 218, 0.4), 0 0 90px rgba(100, 255, 218, 0.2)"
-      ],
-      filter: [
-        "brightness(0.3) blur(3px)",
-        "brightness(0.5) blur(2px)",
-        "brightness(0.3) blur(2.5px)",
-        "brightness(0.7) blur(1px)",
-        "brightness(0.5) blur(1.5px)",
-        "brightness(1) blur(0.3px)",
-        "brightness(0.9) blur(0.5px)",
-        "brightness(1.3) blur(0px)"
-      ],
-      transition: {
-        duration: 0.8,
-        times: [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1],
-        ease: "easeOut"
-      }
-    },
-    visible: {
-      opacity: 1,
-      textShadow: "0 0 30px rgba(100, 255, 218, 1), 0 0 50px rgba(100, 255, 218, 0.7), 0 0 70px rgba(100, 255, 218, 0.4), 0 0 90px rgba(100, 255, 218, 0.2), 0 0 110px rgba(100, 255, 218, 0.1)",
-      filter: "brightness(1.3) blur(0px)",
-      transition: {
-        duration: 0.4
-      }
-    }
-  };
+    const intro = "Hi, my name is";
+    const name = personal.name;
+    const title = personal.title;
 
-  // Container for staggered neon lighting
-  const neonContainerVariants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      }
-    }
-  };
+    let introIndex = 0;
+    let nameIndex = 0;
+    let titleIndex = 0;
 
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 3.5,
-        ease: "easeOut"
+    // Type intro
+    const introTimer = setInterval(() => {
+      if (introIndex <= intro.length) {
+        setDisplayedText(prev => ({ ...prev, intro: intro.slice(0, introIndex) }));
+        introIndex++;
+      } else {
+        clearInterval(introTimer);
+        
+        // Start typing name after intro
+        const nameTimer = setInterval(() => {
+          if (nameIndex <= name.length) {
+            setDisplayedText(prev => ({ ...prev, name: name.slice(0, nameIndex) }));
+            nameIndex++;
+          } else {
+            clearInterval(nameTimer);
+            
+            // Start typing title after name
+            const titleTimer = setInterval(() => {
+              if (titleIndex <= title.length) {
+                setDisplayedText(prev => ({ ...prev, title: title.slice(0, titleIndex) }));
+                titleIndex++;
+              } else {
+                clearInterval(titleTimer);
+              }
+            }, 50);
+          }
+        }, 80);
       }
-    }
-  };
+    }, 60);
 
-  // Render neon text with character-by-character lighting
-  const renderNeonText = (text, className, variants, delay = 0, isName = false) => {
-    return (
-      <motion.div
-        className={className}
-        variants={neonContainerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ 
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          filter: 'drop-shadow(0 0 20px rgba(100, 255, 218, 0.3))'
-        }}
-      >
-        {text.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            variants={variants}
-            initial="hidden"
-            animate={["flicker", "visible"]}
-            style={{ 
-              display: 'inline-block',
-              whiteSpace: char === ' ' ? 'pre' : 'normal',
-              color: isName ? '#FFFFFF' : '#64FFDA',
-              fontWeight: isName ? '900' : '600'
-            }}
-            transition={{ delay: delay + index * 0.05 }}
-          >
-            {char}
-          </motion.span>
-        ))}
-      </motion.div>
-    );
-  };
+    return () => {
+      clearInterval(introTimer);
+    };
+  }, [isInView, personal.name, personal.title]);
 
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #0A192F 0%, #0F1B2E 100%)' }}
+      ref={ref}
+      className="min-h-screen flex items-center justify-center relative"
     >
       <div className="container mx-auto px-6 py-20 text-center">
-        <div className="max-w-5xl mx-auto">
-          {/* Intro with neon glow */}
-          {renderNeonText(
-            "Hi, my name is",
-            "text-sm md:text-lg mb-8 font-mono tracking-widest uppercase",
-            neonCharVariants,
-            0
-          )}
-          
-          {/* Name with maximum neon effect */}
-          <div className="mb-8">
-            {renderNeonText(
-              personal.name,
-              "text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter",
-              neonNameVariants,
-              0.7,
-              true
+        <div className="max-w-4xl mx-auto">
+          {/* Intro text with typewriter */}
+          <p className="text-[#64FFDA] text-sm md:text-base mb-4 font-mono">
+            {displayedText.intro}
+            {displayedText.intro.length < "Hi, my name is".length && (
+              <span className="animate-pulse">|</span>
             )}
-          </div>
+          </p>
           
-          {/* Title with neon glow */}
-          <div className="mb-10">
-            {renderNeonText(
-              personal.title,
-              "text-xl md:text-3xl lg:text-4xl font-semibold tracking-wide",
-              neonCharVariants,
-              2.5
+          {/* Name with typewriter */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 min-h-[4rem] md:min-h-[6rem]">
+            {displayedText.name}
+            {displayedText.intro === "Hi, my name is" && displayedText.name.length < personal.name.length && (
+              <span className="animate-pulse">|</span>
             )}
-          </div>
+          </h1>
           
-          {/* Content fades in after neon sequence */}
+          {/* Title with typewriter */}
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#A8B2D1] mb-6 min-h-[3rem] md:min-h-[4rem]">
+            {displayedText.title}
+            {displayedText.name === personal.name && displayedText.title.length < personal.title.length && (
+              <span className="animate-pulse">|</span>
+            )}
+          </h2>
+          
+          {/* Tagline and buttons appear after typing completes */}
           <motion.div
-            variants={contentVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: displayedText.title === personal.title ? 1 : 0 
+            }}
+            transition={{ duration: 0.5 }}
           >
-            <p className="text-[#A8B2D1] text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#A8B2D1] text-lg md:text-xl mb-8 max-w-2xl mx-auto">
               {personal.tagline}
             </p>
             
             <div className="flex gap-4 justify-center flex-wrap">
               <Button
                 onClick={() => scrollToSection('projects')}
-                className="bg-transparent border-2 border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA]/10 px-8 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(100,255,218,0.5)]"
-                style={{
-                  boxShadow: '0 0 10px rgba(100, 255, 218, 0.3)'
-                }}
+                className="bg-transparent border border-[#64FFDA] text-[#64FFDA] hover:bg-[#64FFDA]/10 px-8 py-6 text-base"
               >
                 View My Work
               </Button>
               <Button
                 onClick={() => scrollToSection('contact')}
-                className="bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/90 px-8 py-6 text-base font-semibold transition-all duration-300 hover:scale-105"
-                style={{
-                  boxShadow: '0 0 20px rgba(100, 255, 218, 0.6)'
-                }}
+                className="bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/90 px-8 py-6 text-base"
               >
                 Get In Touch
               </Button>
@@ -232,26 +127,17 @@ const Hero = ({ personal }) => {
         </div>
       </div>
 
-      {/* Scroll indicator with neon glow */}
+      {/* Scroll indicator */}
       <motion.button
         onClick={() => scrollToSection('about')}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-[#64FFDA] hover:opacity-80 transition-opacity"
-        initial={{ opacity: 0 }}
-        animate={{ 
-          opacity: 1,
+        animate={{
           y: [0, 10, 0]
         }}
         transition={{
-          opacity: { delay: 4, duration: 0.5 },
-          y: { 
-            duration: 2, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 4
-          }
-        }}
-        style={{
-          filter: 'drop-shadow(0 0 10px rgba(100, 255, 218, 0.6))'
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       >
         <ArrowDown size={32} />
