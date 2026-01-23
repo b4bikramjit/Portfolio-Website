@@ -22,13 +22,23 @@ const Projects = () => {
             {projects.map((project) => (
               <Card
                 key={project.id}
-                className="bg-[#112240] border-[#64FFDA]/20 p-6 hover:border-[#64FFDA] transition-all duration-300 hover:transform hover:scale-105 flex flex-col"
+                className="bg-[#112240] border-[#64FFDA]/20 overflow-hidden hover:border-[#64FFDA] transition-all duration-300 hover:transform hover:scale-105 flex flex-col"
               >
-                <div className="flex-1">
+                {/* Project Image */}
+                <div className="w-full h-48 overflow-hidden relative group">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#112240] to-transparent opacity-60"></div>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold text-white mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-[#8892B0] text-sm mb-4 leading-relaxed">
+                  <p className="text-[#A8B2D1] text-sm mb-4 leading-relaxed">
                     {project.description}
                   </p>
 
@@ -52,24 +62,24 @@ const Projects = () => {
                       </Badge>
                     ))}
                   </div>
-                </div>
 
-                {/* Links */}
-                <div className="flex gap-3 mt-4">
-                  <Button
-                    onClick={() => window.open(project.github, '_blank')}
-                    className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
-                  >
-                    <Github size={16} className="mr-2" />
-                    Code
-                  </Button>
-                  <Button
-                    onClick={() => window.open(project.link, '_blank')}
-                    className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Demo
-                  </Button>
+                  {/* Links */}
+                  <div className="flex gap-3 mt-auto">
+                    <Button
+                      onClick={() => window.open(project.github, '_blank')}
+                      className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
+                    >
+                      <Github size={16} className="mr-2" />
+                      Code
+                    </Button>
+                    <Button
+                      onClick={() => window.open(project.link, '_blank')}
+                      className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
+                    >
+                      <ExternalLink size={16} className="mr-2" />
+                      Demo
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}
