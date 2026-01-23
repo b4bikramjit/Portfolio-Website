@@ -17,10 +17,10 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <p className="text-[#8892B0] text-lg leading-relaxed mb-6">
+              <p className="text-[#A8B2D1] text-lg leading-relaxed mb-6">
                 {about.description}
               </p>
-              <p className="text-[#8892B0] text-lg leading-relaxed">
+              <p className="text-[#A8B2D1] text-lg leading-relaxed">
                 I specialize in turning complex datasets into clear, actionable insights that drive business value. 
                 My experience spans machine learning, statistical analysis, and business intelligence across various industries.
               </p>
@@ -35,7 +35,7 @@ const About = () => {
                   <div className="text-3xl font-bold text-[#64FFDA] mb-2">
                     {highlight.value}
                   </div>
-                  <div className="text-[#8892B0] text-sm">
+                  <div className="text-[#A8B2D1] text-sm">
                     {highlight.label}
                   </div>
                 </Card>
