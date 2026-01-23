@@ -45,7 +45,7 @@ const Contact = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <p className="text-[#8892B0] text-lg mb-8 leading-relaxed">
+              <p className="text-[#A8B2D1] text-lg mb-8 leading-relaxed">
                 I'm currently open to new opportunities and collaborations. 
                 Whether you have a project in mind or just want to connect, 
                 feel free to reach out!
@@ -54,7 +54,7 @@ const Contact = () => {
               <div className="space-y-4">
                 <a
                   href={`mailto:${personal.email}`}
-                  className="flex items-center gap-3 text-[#8892B0] hover:text-[#64FFDA] transition-colors group"
+                  className="flex items-center gap-3 text-[#A8B2D1] hover:text-[#64FFDA] transition-colors group"
                 >
                   <div className="p-3 bg-[#112240] rounded-lg group-hover:bg-[#64FFDA]/10 transition-colors">
                     <Mail size={20} className="text-[#64FFDA]" />
@@ -64,7 +64,7 @@ const Contact = () => {
 
                 <a
                   href={`tel:${personal.phone}`}
-                  className="flex items-center gap-3 text-[#8892B0] hover:text-[#64FFDA] transition-colors group"
+                  className="flex items-center gap-3 text-[#A8B2D1] hover:text-[#64FFDA] transition-colors group"
                 >
                   <div className="p-3 bg-[#112240] rounded-lg group-hover:bg-[#64FFDA]/10 transition-colors">
                     <Phone size={20} className="text-[#64FFDA]" />
@@ -72,7 +72,7 @@ const Contact = () => {
                   <span>{personal.phone}</span>
                 </a>
 
-                <div className="flex items-center gap-3 text-[#8892B0]">
+                <div className="flex items-center gap-3 text-[#A8B2D1]">
                   <div className="p-3 bg-[#112240] rounded-lg">
                     <MapPin size={20} className="text-[#64FFDA]" />
                   </div>
