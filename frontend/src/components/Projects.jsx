@@ -7,7 +7,7 @@ import { Button } from './ui/button';
 
 const Projects = ({ projects }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
