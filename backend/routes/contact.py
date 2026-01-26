@@ -21,7 +21,14 @@ async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIO
         # Save to database
         result = await db.contact_messages.insert_one(message.dict())
         
-        logger.info(f"New contact message from {message.email}")
+        # Send email notification
+        from email_utils import send_contact_email
+        email_sent = send_contact_email(message.name, message.email, message.message)
+        
+        if email_sent:
+            logger.info(f"New contact message from {message.email} (Email sent)")
+        else:
+            logger.warning(f"New contact message from {message.email} (Email failed to send)")
         
         return {
             "success": True,

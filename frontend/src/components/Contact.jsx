@@ -14,7 +14,7 @@ const API = `${BACKEND_URL}/api`;
 const Contact = ({ personal }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,18 +28,33 @@ const Contact = ({ personal }) => {
 
     try {
       const response = await axios.post(`${API}/contact`, formData);
-      
+
       toast({
         title: "Message Sent!",
         description: response.data.message || "Thank you for reaching out. I'll get back to you soon.",
       });
-      
+
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error sending message:', error);
+
+      let errorMessage = "Failed to send message. Please try again.";
+
+      if (error.response?.data?.detail) {
+        const detail = error.response.data.detail;
+        if (Array.isArray(detail)) {
+          // Format Pydantic validation errors
+          errorMessage = detail.map(err => err.msg).join(', ');
+        } else if (typeof detail === 'string') {
+          errorMessage = detail;
+        } else {
+          errorMessage = JSON.stringify(detail);
+        }
+      }
+
       toast({
         title: "Error",
-        description: error.response?.data?.detail || "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive"
       });
     } finally {
@@ -90,20 +105,20 @@ const Contact = ({ personal }) => {
   return (
     <section id="contact" className="py-20 relative" ref={ref}>
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="max-w-6xl mx-auto"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-white mb-2"
           >
             <span className="text-[#64FFDA] font-mono text-xl mr-2">05.</span>
             Get In Touch
           </motion.h2>
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="h-[1px] bg-[#8892B0]/20 mb-12"
           ></motion.div>
@@ -111,16 +126,16 @@ const Contact = ({ personal }) => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <motion.div variants={containerVariants}>
-              <motion.p 
+              <motion.p
                 variants={itemVariants}
                 className="text-[#A8B2D1] text-lg mb-8 leading-relaxed"
               >
-                I'm currently open to new opportunities and collaborations. 
-                Whether you have a project in mind or just want to connect, 
+                I'm currently open to new opportunities and collaborations.
+                Whether you have a project in mind or just want to connect,
                 feel free to reach out!
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 className="space-y-4"
                 variants={containerVariants}
               >
@@ -148,7 +163,7 @@ const Contact = ({ personal }) => {
                   <span>{personal.phone}</span>
                 </motion.a>
 
-                <motion.div 
+                <motion.div
                   className="flex items-center gap-3 text-[#A8B2D1]"
                   variants={contactItemVariants}
                 >
@@ -159,7 +174,7 @@ const Contact = ({ personal }) => {
                 </motion.div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="flex gap-4 mt-8"
                 variants={containerVariants}
               >

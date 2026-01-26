@@ -1,0 +1,82 @@
+﻿
+[main 2026-01-25T19:43:06.777Z] PolicyConfiguration#initialize
+[main 2026-01-25T19:43:06.778Z] PolicyConfiguration#updatePolicyDefinitions [
+  'update.mode',
+  'update.channel',
+  'update.enableWindowsBackgroundUpdates',
+  'antigravity.enableAgentMode',
+  'http.useLocalProxyConfiguration',
+  'http.electronFetch',
+  'http.proxy',
+  'http.proxyStrictSSL',
+  'http.proxyKerberosServicePrincipal',
+  'http.noProxy',
+  'http.proxyAuthorization',
+  'http.proxySupport',
+  'http.systemCertificates',
+  'http.experimental.systemCertificatesV2',
+  'http.fetchAdditionalSupport',
+  'telemetry.telemetryLevel',
+  'telemetry.feedback.enabled',
+  'telemetry.enableTelemetry',
+  'extensions.allowed'
+]
+[main 2026-01-25T19:43:06.780Z] NativePolicyService#_updatePolicyDefinitions - Found 4 policy definitions
+[main 2026-01-25T19:43:06.789Z] [File Watcher (node.js)] Request to start watching: c:\Users\b4bik\AppData\Roaming\Antigravity\User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),c:\Users\b4bik\AppData\Roaming\Antigravity\User\settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[main 2026-01-25T19:43:06.796Z] NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+[main 2026-01-25T19:43:06.796Z] PolicyConfiguration#update [
+  'update.mode',
+  'telemetry.telemetryLevel',
+  'telemetry.feedback.enabled',
+  'extensions.allowed'
+]
+[main 2026-01-25T19:43:06.796Z] PolicyConfiguration#updatePolicyDefinitions []
+[main 2026-01-25T19:43:06.796Z] PolicyConfiguration#update []
+[main 2026-01-25T19:43:06.805Z] [File Watcher (node.js)] Started watching: 'c:\Users\b4bik\AppData\Roaming\Antigravity\User'
+[main 2026-01-25T19:43:06.805Z] [File Watcher (node.js)] Started watching: 'c:\Users\b4bik\AppData\Roaming\Antigravity\User\settings.json'
+[main 2026-01-25T19:43:06.849Z] Sending some foreground love to the running instance: 30276
+[main 2026-01-25T19:43:06.854Z] Sending env to running instance...
+[main 2026-01-25T19:43:06.896Z] Sent env to running instance. Terminating...
+[main 2026-01-25T19:43:06.896Z] Lifecycle#kill()
+[main 2026-01-25T19:43:06.896Z] Lifecycle#onWillShutdown.fire()
+
+[main 2026-01-25T19:43:57.872Z] PolicyConfiguration#initialize
+[main 2026-01-25T19:43:57.874Z] PolicyConfiguration#updatePolicyDefinitions [
+  'update.mode',
+  'update.channel',
+  'update.enableWindowsBackgroundUpdates',
+  'antigravity.enableAgentMode',
+  'http.useLocalProxyConfiguration',
+  'http.electronFetch',
+  'http.proxy',
+  'http.proxyStrictSSL',
+  'http.proxyKerberosServicePrincipal',
+  'http.noProxy',
+  'http.proxyAuthorization',
+  'http.proxySupport',
+  'http.systemCertificates',
+  'http.experimental.systemCertificatesV2',
+  'http.fetchAdditionalSupport',
+  'telemetry.telemetryLevel',
+  'telemetry.feedback.enabled',
+  'telemetry.enableTelemetry',
+  'extensions.allowed'
+]
+[main 2026-01-25T19:43:57.876Z] NativePolicyService#_updatePolicyDefinitions - Found 4 policy definitions
+[main 2026-01-25T19:43:57.885Z] [File Watcher (node.js)] Request to start watching: c:\Users\b4bik\AppData\Roaming\Antigravity\User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),c:\Users\b4bik\AppData\Roaming\Antigravity\User\settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[main 2026-01-25T19:43:57.893Z] NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+[main 2026-01-25T19:43:57.894Z] PolicyConfiguration#update [
+  'update.mode',
+  'telemetry.telemetryLevel',
+  'telemetry.feedback.enabled',
+  'extensions.allowed'
+]
+[main 2026-01-25T19:43:57.894Z] PolicyConfiguration#updatePolicyDefinitions []
+[main 2026-01-25T19:43:57.894Z] PolicyConfiguration#update []
+[main 2026-01-25T19:43:57.903Z] [File Watcher (node.js)] Started watching: 'c:\Users\b4bik\AppData\Roaming\Antigravity\User'
+[main 2026-01-25T19:43:57.904Z] [File Watcher (node.js)] Started watching: 'c:\Users\b4bik\AppData\Roaming\Antigravity\User\settings.json'
+[main 2026-01-25T19:43:57.936Z] Sending some foreground love to the running instance: 30276
+[main 2026-01-25T19:43:57.940Z] Sending env to running instance...
+[main 2026-01-25T19:43:57.988Z] Sent env to running instance. Terminating...
+[main 2026-01-25T19:43:57.988Z] Lifecycle#kill()
+[main 2026-01-25T19:43:57.988Z] Lifecycle#onWillShutdown.fire()

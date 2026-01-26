@@ -19,7 +19,7 @@ PORTFOLIO_DATA = {
         "title": "Data Analyst & Machine Learning Enthusiast",
         "tagline": "Transforming data into actionable insights",
         "phone": "(+1) 437-248-8183",
-        "email": "bikramjit@example.com",
+        "email": "b8singh@uwaterloo.ca",
         "github": "https://github.com/bikramjit",
         "linkedin": "https://linkedin.com/in/bikramjit",
         "location": "Waterloo, ON"
@@ -142,7 +142,7 @@ PORTFOLIO_DATA = {
         },
         {
             "id": 5,
-            "title": "Customer Segmentation Analysis",
+            "title": "SuperStore Sales Dashboard",
             "description": "Performed clustering analysis on customer data using K-means and hierarchical clustering to identify distinct customer segments for targeted marketing strategies.",
             "technologies": ["Python", "Scikit-learn", "Pandas", "Seaborn"],
             "metrics": {
@@ -155,7 +155,7 @@ PORTFOLIO_DATA = {
         },
         {
             "id": 6,
-            "title": "Sales Forecasting Model",
+            "title": "Research Papers",
             "description": "Developed time-series forecasting model using ARIMA and Prophet to predict quarterly sales, achieving high accuracy for business planning and inventory management.",
             "technologies": ["Python", "Prophet", "ARIMA", "Time Series"],
             "metrics": {
@@ -181,13 +181,15 @@ async def seed_database():
     """Seed the database with initial portfolio data"""
     
     # Connect to MongoDB
-    mongo_url = os.environ.get('MONGO_URL')
-    if not mongo_url:
-        print("Error: MONGO_URL not found in environment variables")
-        return
+    mongo_url = os.environ.get('MONGO_URL', 'mock')
     
-    client = AsyncIOMotorClient(mongo_url)
-    db = client[os.environ.get('DB_NAME', 'portfolio_db')]
+    if mongo_url == 'mock':
+        from mock_db import MockClient
+        client = MockClient()
+        db = client[os.environ.get('DB_NAME', 'portfolio_db')]
+    else:
+        client = AsyncIOMotorClient(mongo_url)
+        db = client[os.environ.get('DB_NAME', 'portfolio_db')]
     
     try:
         # Check if portfolio already exists
@@ -195,12 +197,7 @@ async def seed_database():
         
         if existing:
             print("Portfolio data already exists in database.")
-            overwrite = input("Do you want to overwrite it? (yes/no): ")
-            if overwrite.lower() != 'yes':
-                print("Seeding cancelled.")
-                return
-            
-            # Delete existing portfolio
+            # Auto-overwrite for automated setup
             await db.portfolio.delete_many({})
             print("Existing portfolio data deleted.")
         
