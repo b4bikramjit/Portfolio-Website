@@ -52,7 +52,12 @@ function App() {
       <div className="App">
         <ParticleBackground />
         <div className="min-h-screen flex items-center justify-center">
-          <div className="text-red-500 text-xl">{error || 'No data available'}</div>
+          <div className="text-red-500 text-xl mb-4">{error || 'No data available'}</div>
+          <div className="text-gray-400 text-sm font-mono bg-black/50 p-4 rounded">
+            <p>Debug Info:</p>
+            <p>Target URL: {API}/portfolio</p>
+            <p>Backend URL Env: {BACKEND_URL || 'Undefined'}</p>
+          </div>
         </div>
       </div>
     );
