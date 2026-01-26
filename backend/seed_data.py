@@ -183,12 +183,13 @@ async def seed_database():
     # Connect to MongoDB
     mongo_url = os.environ.get('MONGO_URL', 'mock')
     
+    import certifi
     if mongo_url == 'mock':
         from mock_db import MockClient
         client = MockClient()
         db = client[os.environ.get('DB_NAME', 'portfolio_db')]
     else:
-        client = AsyncIOMotorClient(mongo_url)
+        client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
         db = client[os.environ.get('DB_NAME', 'portfolio_db')]
     
     try:
