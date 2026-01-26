@@ -28,7 +28,8 @@ function App() {
         setLoading(false);
       } catch (err) {
         console.error('Error fetching portfolio data:', err);
-        setError('Failed to load portfolio data');
+        const errorMessage = err.response?.data?.detail || err.message || 'Failed to load portfolio data';
+        setError(errorMessage);
         setLoading(false);
       }
     };
