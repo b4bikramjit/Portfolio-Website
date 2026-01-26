@@ -105,6 +105,16 @@ async def get_messages_endpoint(skip: int = 0, limit: int = 50):
     from routes.contact import get_all_messages
     return await get_all_messages(db, skip, limit)
 
+@app.get("/api/admin/seed")
+async def seed_data_endpoint():
+    """Trigger database seeding from the server side"""
+    from seed_data import seed_database
+    try:
+        await seed_database()
+        return {"status": "success", "message": "Database seeded successfully"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
