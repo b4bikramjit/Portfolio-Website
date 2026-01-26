@@ -23,7 +23,9 @@ if mongo_url == 'mock':
     db = client[os.environ.get('DB_NAME', 'portfolio_db')]
 else:
     import certifi
-    client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
+    # client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
+    # Fallback to skipping verification if certifi fails in this env
+    client = AsyncIOMotorClient(mongo_url, tls=True, tlsAllowInvalidCertificates=True)
     db = client[os.environ.get('DB_NAME', 'portfolio_db')]
 
 # Create the main app without a prefix

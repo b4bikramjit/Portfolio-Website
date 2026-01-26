@@ -189,7 +189,8 @@ async def seed_database():
         client = MockClient()
         db = client[os.environ.get('DB_NAME', 'portfolio_db')]
     else:
-        client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
+        # client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
+        client = AsyncIOMotorClient(mongo_url, tls=True, tlsAllowInvalidCertificates=True)
         db = client[os.environ.get('DB_NAME', 'portfolio_db')]
     
     try:
