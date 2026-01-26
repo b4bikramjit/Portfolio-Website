@@ -23,9 +23,13 @@ if mongo_url == 'mock':
     db = client[os.environ.get('DB_NAME', 'portfolio_db')]
 else:
     import certifi
-    # client = AsyncIOMotorClient(mongo_url, tlsCAFile=certifi.where())
-    # Fallback to skipping verification if certifi fails in this env
-    client = AsyncIOMotorClient(mongo_url, tls=True, tlsAllowInvalidCertificates=True)
+    # Force SSL settings into the URL parameters
+    if '?' not in mongo_url:
+        mongo_url += '?tls=true&tlsAllowInvalidCertificates=true'
+    else:
+        mongo_url += '&tls=true&tlsAllowInvalidCertificates=true'
+    
+    client = AsyncIOMotorClient(mongo_url)
     db = client[os.environ.get('DB_NAME', 'portfolio_db')]
 
 # Create the main app without a prefix
@@ -136,3 +140,4 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+    # Reload trigger (Switching to MOCK mode)
