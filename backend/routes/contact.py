@@ -6,7 +6,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIOMotorDatabase):
+from fastapi import BackgroundTasks
+
+async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIOMotorDatabase, background_tasks: BackgroundTasks):
     """
     Submit a contact form message
     """
@@ -21,14 +23,11 @@ async def create_contact_message(message_data: ContactMessageCreate, db: AsyncIO
         # Save to database
         result = await db.contact_messages.insert_one(message.dict())
         
-        # Send email notification
+        # Send email notification in background
         from email_utils import send_contact_email
-        email_sent = send_contact_email(message.name, message.email, message.message)
+        background_tasks.add_task(send_contact_email, message.name, message.email, message.message)
         
-        if email_sent:
-            logger.info(f"New contact message from {message.email} (Email sent)")
-        else:
-            logger.warning(f"New contact message from {message.email} (Email failed to send)")
+        logger.info(f"New contact message from {message.email} (Email queued)")
         
         return {
             "success": True,

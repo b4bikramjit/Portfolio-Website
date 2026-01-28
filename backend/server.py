@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, Request
+from fastapi import FastAPI, APIRouter, Request, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -103,9 +103,9 @@ async def get_portfolio_endpoint():
     return await get_portfolio(db)
 
 @app.post("/api/contact")
-async def create_contact_endpoint(message_data: ContactMessageCreate):
+async def create_contact_endpoint(message_data: ContactMessageCreate, background_tasks: BackgroundTasks):
     from routes.contact import create_contact_message
-    return await create_contact_message(message_data, db)
+    return await create_contact_message(message_data, db, background_tasks)
 
 @app.get("/api/contact/messages")
 async def get_messages_endpoint(skip: int = 0, limit: int = 50):
