@@ -63,6 +63,11 @@ async def db_session_middleware(request: Request, call_next):
     response = await call_next(request)
     return response
 
+# Health Check
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 # Legacy routes (keeping for backward compatibility)
 @api_router.get("/")
 async def root():
