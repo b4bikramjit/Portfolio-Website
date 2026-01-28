@@ -37,7 +37,7 @@ const Hero = ({ personal }) => {
     { icon: <BarChart2 className="w-6 h-6 text-indigo-400" />, value: "6+", label: "Projects" },
     { icon: <Zap className="w-6 h-6 text-amber-400" />, value: "15+", label: "Skills" },
     { icon: <Briefcase className="w-6 h-6 text-rose-400" />, value: "3", label: "Experience" },
-    { icon: <Target className="w-6 h-6 text-emerald-400" />, value: "100%", label: "Accuracy" },
+    { icon: <Target className="w-6 h-6 text-emerald-400" />, value: "86%", label: "Accuracy" },
   ];
 
   return (
@@ -101,7 +101,7 @@ const Hero = ({ personal }) => {
             className="flex items-center justify-center gap-4 text-slate-400 text-lg md:text-xl font-light mb-16"
           >
             <span className="h-px w-12 bg-slate-700"></span>
-            <span>Data Analyst & ML Enthusiast</span>
+            <span className="text-white">Data Analyst & ML Enthusiast</span>
             <span className="h-px w-12 bg-slate-700"></span>
           </motion.div>
 
