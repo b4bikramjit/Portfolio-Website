@@ -46,7 +46,6 @@ PORTFOLIO_DATA = {
             "Data Preprocessing", "Exploratory Data Analysis",
             "Feature Engineering", "Regression Modeling",
             "Classification Modeling", "Optimization",
-            "Machine Learning", "Statistical Analysis"
         ]
     },
     "experience": [
@@ -99,7 +98,7 @@ PORTFOLIO_DATA = {
             },
             "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
             "link": "https://predspriceca.onrender.com/",
-            "github": "#"
+            "github": "https://github.com/b4bikramjit/canada-house-price-prediction"
         },
         {
             "id": 2,
@@ -111,8 +110,8 @@ PORTFOLIO_DATA = {
                 "insights": "Team & Player Metrics"
             },
             "image": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0",
-            "link": "#",
-            "github": "#"
+            "link": "https://insightsipl.streamlit.app/",
+            "github": "https://github.com/b4bikramjit/IPL-Analytics-Dashboard"
         },
         {
             "id": 3,
@@ -124,8 +123,8 @@ PORTFOLIO_DATA = {
                 "recall": "98%"
             },
             "image": "https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91",
-            "link": "#",
-            "github": "#"
+            "link": "https://detectemail.streamlit.app/",
+            "github": "https://github.com/b4bikramjit/Phishing-Email-Detection-System"
         },
         {
             "id": 4,
@@ -137,34 +136,35 @@ PORTFOLIO_DATA = {
                 "f1Score": "0.85"
             },
             "image": "https://images.unsplash.com/photo-1762279389083-abf71f22d338",
-            "link": "#",
-            "github": "#"
+            "link": "https://ytsentimentanalyzer.streamlit.app/",
+            "github": "https://github.com/b4bikramjit/youtube-sentiment-analyzer"
         },
         {
             "id": 5,
             "title": "SuperStore Sales Dashboard",
-            "description": "Performed clustering analysis on customer data using K-means and hierarchical clustering to identify distinct customer segments for targeted marketing strategies.",
-            "technologies": ["Python", "Scikit-learn", "Pandas", "Seaborn"],
+            "description": "Designed and deployed an interactive Power BI dashboard on a 9K+ US retail dataset to analyze sales trends, seasonality, and category performance, enabling data-driven insights and more informed business decision-making.",
+            "technologies": ["SQL", "Power BI"],
             "metrics": {
-                "segments": "5 Clusters",
-                "improvement": "35% CTR"
+                "size": "9K+ records",
+                "KPI's": "10"
             },
             "image": "https://images.unsplash.com/photo-1759661990336-51bd4b951fea",
-            "link": "#",
-            "github": "#"
+            "link": "https://app.powerbi.com/groups/me/reports/6d4ec908-7e18-41cb-aebd-7d45e35c12c3/ReportSection?experience=power-bi",
+            "github": "https://github.com/b4bikramjit/SuperStore-Sales-Analysis"
         },
         {
             "id": 6,
-            "title": "Research Papers",
-            "description": "Developed time-series forecasting model using ARIMA and Prophet to predict quarterly sales, achieving high accuracy for business planning and inventory management.",
-            "technologies": ["Python", "Prophet", "ARIMA", "Time Series"],
+            "title": "Marketing Collateral",
+            "description": "Designed marketing brochure and authored market and competitive analysis reports evaluating 10+ AI sports broadcasting, analytics, and sales platforms.",
+            "technologies": ["AI-assisted Research", "Statistical Analysis", "Canva"]
+],
             "metrics": {
-                "accuracy": "92%",
-                "horizon": "6 Months"
+                "papers": "2",
+                "horizon": "4 Months"
             },
             "image": "https://images.pexels.com/photos/17483907/pexels-photo-17483907.png",
-            "link": "#",
-            "github": "#"
+            "link": "https://drive.google.com/drive/folders/14P3Jobjm_cW6n8MSrbsl_QGh6C8dqABp?usp=sharing",
+            "github": "https://github.com/b4bikramjit/Marketing-Collateral"
         }
     ],
     "education": {
