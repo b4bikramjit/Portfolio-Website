@@ -14,7 +14,7 @@ def send_contact_email(name, sender_email, message):
     smtp_port = int(os.environ.get('SMTP_PORT', 587))
     smtp_user = os.environ.get('SMTP_USER')
     smtp_pass = os.environ.get('SMTP_PASS')
-    receiver_email = os.environ.get('RECEIVER_EMAIL', smtp_user)
+    receiver_email = os.environ.get('RECEIVER_EMAIL')
 
     if not all([smtp_host, smtp_user, smtp_pass]):
         logger.warning("SMTP credentials not fully configured. Email not sent.")
