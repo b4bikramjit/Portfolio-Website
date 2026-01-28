@@ -23,9 +23,9 @@ const ParticleBackground = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = 2;
+        this.vx = (Math.random() - 0.5) * 0.2; // Slow movement
+        this.vy = (Math.random() - 0.5) * 0.2;
+        this.size = Math.random() * 2 + 1;
       }
 
       update() {
@@ -38,22 +38,25 @@ const ParticleBackground = () => {
 
       draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(100, 255, 218, 0.5)';
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(34, 211, 238, 0.7)'; // Cyan-400, higher opacity for contrast
+        ctx.shadowBlur = 8; // Add glow
+        ctx.shadowColor = 'rgba(34, 211, 238, 0.5)';
         ctx.fill();
+        ctx.shadowBlur = 0; // Reset shadow for performance/other elements
       }
     }
 
     const initParticles = () => {
       particles = [];
-      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+      const particleCount = Math.floor((canvas.width * canvas.height) / 12000); // Slightly denser
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
     };
 
     const connectParticles = () => {
-      const maxDistance = 150;
+      const maxDistance = 160;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -61,9 +64,9 @@ const ParticleBackground = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.3;
+            const opacity = 1 - (distance / maxDistance);
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(100, 255, 218, ${opacity})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${opacity * 0.25})`; // Brighter lines
             ctx.lineWidth = 1;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -104,7 +107,7 @@ const ParticleBackground = () => {
         width: '100%',
         height: '100%',
         zIndex: -1,
-        background: 'linear-gradient(135deg, #0A192F 0%, #112240 100%)'
+        background: '#020617' // Slate-950
       }}
     />
   );

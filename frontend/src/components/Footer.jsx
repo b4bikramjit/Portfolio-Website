@@ -5,11 +5,11 @@ const Footer = ({ personal }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-8 border-t border-[#8892B0]/20">
+    <footer className="py-8 bg-slate-950 border-t border-slate-800">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[#A8B2D1] text-sm">
-            © {currentYear} {personal.name}. Built with data and passion.
+          <div className="text-slate-500 text-sm font-mono">
+            © {currentYear} {personal.name} <span className="text-cyan-500">::</span> Built with React & FastAPI
           </div>
 
           <div className="flex gap-4">
@@ -17,7 +17,7 @@ const Footer = ({ personal }) => {
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
+              className="text-slate-400 hover:text-cyan-400 transition-colors"
             >
               <Github size={20} />
             </a>
@@ -25,13 +25,13 @@ const Footer = ({ personal }) => {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
+              className="text-slate-400 hover:text-cyan-400 transition-colors"
             >
               <Linkedin size={20} />
             </a>
             <a
               href={`mailto:${personal.email}`}
-              className="text-[#A8B2D1] hover:text-[#64FFDA] transition-colors"
+              className="text-slate-400 hover:text-cyan-400 transition-colors"
             >
               <Mail size={20} />
             </a>

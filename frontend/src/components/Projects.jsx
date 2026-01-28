@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Home, Trophy, Shield } from 'lucide-react';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -11,174 +11,137 @@ const Projects = ({ projects }) => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
+  // Helper to get icon based on project title (mock logic since we don't have per-project icon data)
+  const getProjectIcon = (title) => {
+    if (title.includes("House")) return <Home className="w-8 h-8 text-cyan-400" />;
+    if (title.includes("IPL")) return <Trophy className="w-8 h-8 text-cyan-400" />;
+    if (title.includes("Phishing")) return <Shield className="w-8 h-8 text-cyan-400" />;
+    return <Github className="w-8 h-8 text-cyan-400" />;
+  };
+
   return (
-    <section id="projects" className="py-20 relative" ref={ref}>
-      <div className="container mx-auto px-6">
-        <motion.div 
-          className="max-w-6xl mx-auto"
+    <section id="projects" className="py-24 relative bg-transparent" ref={ref}>
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          className="max-w-7xl mx-auto"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.h2 
-            variants={cardVariants}
-            className="text-3xl md:text-4xl font-bold text-white mb-2"
-          >
-            <span className="text-[#64FFDA] font-mono text-xl mr-2">04.</span>
-            Featured Projects
-          </motion.h2>
-          <motion.div 
-            variants={cardVariants}
-            className="h-[1px] bg-[#8892B0]/20 mb-12"
-          ></motion.div>
+          {/* Header */}
+          <motion.div variants={cardVariants} className="mb-20 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Projects<span className="text-cyan-400">.showcase</span>
+            </h2>
+            <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
+            <p className="text-slate-400 mt-6 max-w-2xl mx-auto leading-relaxed">
+              A collection of data science and machine learning projects demonstrating end-to-end analytics capabilities
+            </p>
+          </motion.div>
 
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
           >
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={cardVariants}
-                whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.3 }
-                }}
+                whileHover={{ y: -10 }}
+                className="h-full"
               >
-                <Card className="bg-[#112240] border-[#64FFDA]/20 overflow-hidden hover:border-[#64FFDA] transition-all duration-300 flex flex-col h-full">
-                  {/* Project Image */}
-                  <motion.div 
-                    className="w-full h-48 overflow-hidden relative group"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      initial={{ scale: 1.2 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#112240] to-transparent opacity-60"></div>
-                  </motion.div>
+                <Card className="h-full bg-slate-900 border-slate-800 flex flex-col hover:border-cyan-500/30 transition-all duration-300 relative group overflow-hidden">
 
-                  <div className="p-6 flex-1 flex flex-col">
-                    <motion.h3 
-                      className="text-xl font-bold text-white mb-3"
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
+                  {/* Cover Image */}
+                  <div className="h-64 overflow-hidden relative">
+                    <img
+                      src={project.image || `https://source.unsplash.com/random/800x600?data,${index}`} // Fallback or use seeded image
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/40 transition-colors" />
+
+                    {/* Floating Icon */}
+                    <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md p-2 rounded-lg border border-slate-700/50 text-cyan-400 shadow-lg">
+                      {getProjectIcon(project.title)}
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    {/* Background Number */}
+                    <div className="absolute top-52 right-6 text-6xl font-bold text-slate-800/20 pointer-events-none select-none z-0">
+                      0{index + 1}
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors relative z-10">
                       {project.title}
-                    </motion.h3>
-                    
-                    <motion.p 
-                      className="text-[#A8B2D1] text-sm mb-4 leading-relaxed"
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
+                    </h3>
+
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3 relative z-10 flex-grow">
                       {project.description}
-                    </motion.p>
+                    </p>
 
                     {/* Metrics */}
-                    <motion.div 
-                      className="mb-4 space-y-1"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      {Object.entries(project.metrics).map(([key, value], index) => (
-                        <motion.div 
-                          key={key} 
-                          className="text-[#64FFDA] text-base font-mono font-semibold"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                          transition={{ delay: 0.5 + index * 0.1 }}
-                        >
-                          {value}
-                        </motion.div>
+                    <div className="flex gap-6 mb-4 border-t border-slate-800 pt-4 relative z-10">
+                      {Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
+                        <div key={key}>
+                          <div className="text-xl font-bold text-cyan-400 mb-1">{value}</div>
+                          <div className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">{key}</div>
+                        </div>
                       ))}
-                    </motion.div>
+                    </div>
 
-                    {/* Technologies */}
-                    <motion.div 
-                      className="flex flex-wrap gap-2 mb-4"
-                      initial="hidden"
-                      animate={isInView ? "visible" : "hidden"}
-                      variants={{
-                        visible: {
-                          transition: {
-                            staggerChildren: 0.05,
-                            delayChildren: 0.6
-                          }
-                        }
-                      }}
-                    >
-                      {project.technologies.map((tech, idx) => (
-                        <motion.div
-                          key={idx}
-                          variants={{
-                            hidden: { opacity: 0, scale: 0 },
-                            visible: { opacity: 1, scale: 1 }
-                          }}
-                        >
-                          <Badge className="bg-[#0A192F] text-[#64FFDA] border-none text-xs px-2 py-1">
-                            {tech}
-                          </Badge>
-                        </motion.div>
+                    {/* Tech Pills */}
+                    <div className="flex flex-wrap gap-2 mb-4 relative z-10">
+                      {project.technologies.slice(0, 4).map((tech, idx) => (
+                        <Badge key={idx} className="bg-slate-950 text-slate-400 border-slate-800 hover:text-cyan-400 hover:border-cyan-500/30">
+                          {tech}
+                        </Badge>
                       ))}
-                    </motion.div>
+                    </div>
 
-                    {/* Links */}
-                    <motion.div 
-                      className="flex gap-3 mt-auto"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      <Button
+                    {/* Actions */}
+                    <div className="flex gap-4 pt-4 border-t border-slate-800/50 relative z-10">
+                      <button
                         onClick={() => window.open(project.github, '_blank')}
-                        className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
+                        className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors cursor-pointer"
                       >
-                        <Github size={16} className="mr-2" />
-                        Code
-                      </Button>
-                      <Button
+                        <Github size={18} /> Code
+                      </button>
+                      <button
                         onClick={() => window.open(project.link, '_blank')}
-                        className="bg-transparent border border-[#64FFDA]/30 text-[#64FFDA] hover:bg-[#64FFDA]/10 flex-1 py-2"
+                        className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors cursor-pointer"
                       >
-                        <ExternalLink size={16} className="mr-2" />
-                        Demo
-                      </Button>
-                    </motion.div>
+                        <ExternalLink size={18} /> Live Demo
+                      </button>
+                    </div>
                   </div>
                 </Card>
               </motion.div>
             ))}
           </motion.div>
+
+          <div className="mt-16 text-center">
+            <Button
+              className="bg-transparent border border-cyan-500/30 text-cyan-400 hover:bg-cyan-950/30 hover:border-cyan-400 px-8 py-6 rounded-lg font-mono text-sm transition-all"
+              onClick={() => window.open('https://github.com/bikramjit', '_blank')}
+            >
+              view_more_on_github()
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

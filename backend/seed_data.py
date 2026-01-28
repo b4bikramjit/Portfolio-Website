@@ -57,9 +57,9 @@ PORTFOLIO_DATA = {
             "location": "Edmonton",
             "period": "Sept 2025 – Dec 2025",
             "achievements": [
-                "Authored market and competitive analysis reports across US, Canada, and India, evaluating 10+ AI sports broadcasting, analytics, and sales platforms",
-                "Designed data-driven marketing collateral for SportsStreamTV, supporting go-to-market strategy and improving pitch effectiveness by 30%",
-                "Optimized Facebook Meta ad performance for Toronto Raptors and Edmonton Oilers Cruise, increasing engagement by 25% and reducing CPC by 18%"
+                "Authored market and competitive analysis reports across **US, Canada, and India**, evaluating **10+ AI sports broadcasting**, analytics, and sales platforms",
+                "Designed data-driven marketing collateral for **SportsStreamTV**, supporting go-to-market strategy and improving **pitch effectiveness by 30%**",
+                "Optimized Facebook Meta ad performance for **Toronto Raptors** and **Edmonton Oilers** Cruise, increasing **engagement by 25%** and reducing **CPC by 18%**"
             ]
         },
         {
@@ -69,9 +69,9 @@ PORTFOLIO_DATA = {
             "location": "Waterloo",
             "period": "Jan 2025 – April 2025",
             "achievements": [
-                "Analyzed website and Instagram performance across 5+ campaigns, tracking reach, impressions, CTR, and engagement rate to identify audience trends",
-                "Applied data-backed insights to optimize WCMS-managed pages (30+ pages) and digital content, improving accessibility and increasing average engagement by 20%",
-                "Translated engagement analytics into actionable recommendations for event and campaign strategy"
+                "Analyzed website and Instagram performance across **5+ campaigns**, tracking reach, impressions, **CTR**, and engagement rate to identify audience trends",
+                "Applied data-backed insights to optimize **WCMS-managed pages (30+ pages)** and digital content, improving accessibility and increasing **average engagement by 20%**",
+                "Translated engagement **analytics** into actionable recommendations for **event and campaign strategy**"
             ]
         },
         {
@@ -81,9 +81,9 @@ PORTFOLIO_DATA = {
             "location": "Waterloo",
             "period": "May 2024 – Sept 2024",
             "achievements": [
-                "Developed and evaluated ML classification models for underwater garbage detection, achieving 80%+ accuracy",
-                "Applied data analytics and automation to social media performance tracking, analyzing 10k+ user interactions",
-                "Improved engagement by 20% while reducing manual reporting effort by 40%"
+                "Developed and evaluated **ML classification models** for underwater garbage detection, achieving **80%+ accuracy**",
+                "Applied data **analytics and automation** to social media performance tracking, analyzing **10k+ user interactions**",
+                "Improved engagement by **20%** while reducing **manual reporting effort by 40%**"
             ]
         }
     ],
