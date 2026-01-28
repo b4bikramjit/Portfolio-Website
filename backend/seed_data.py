@@ -20,8 +20,8 @@ PORTFOLIO_DATA = {
         "tagline": "Transforming data into actionable insights",
         "phone": "(+1) 437-248-8183",
         "email": "b8singh@uwaterloo.ca",
-        "github": "https://github.com/bikramjit",
-        "linkedin": "https://linkedin.com/in/bikramjit",
+        "github": "https://github.com/b4bikramjit",
+        "linkedin": "https://www.linkedin.com/in/bikramjit-singh-991b9a27b/",
         "location": "Waterloo, ON"
     },
     "about": {
