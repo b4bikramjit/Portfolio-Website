@@ -92,7 +92,7 @@ const About = ({ about }) => {
                     </div>
                     <div>
                       <div className="text-[10px] text-slate-500 uppercase font-bold">Education</div>
-                      <div className="text-slate-300 text-xs text-nowrap">BMath Statistics @ UWaterloo</div>
+                      <div className="text-slate-300 text-xs">BMath Statistics @ UWaterloo</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700">
@@ -120,7 +120,7 @@ const About = ({ about }) => {
             {/* Right Column: Narrative */}
             <motion.div variants={itemVariants} className="text-slate-300 text-lg leading-loose">
               <p className="mb-6">
-                I'm a Statistics student at the <span className="text-cyan-400 font-semibold relative inline-block">University of Waterloo<span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400/50"></span></span> with a deep passion for uncovering stories hidden in data. My journey combines rigorous mathematical foundations with practical machine learning applications.
+                I'm a Statistics student at the <a href="https://uwaterloo.ca/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-semibold relative inline-block hover:text-cyan-300 transition-colors">University of Waterloo<span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400/50"></span></a> with a deep passion for uncovering stories hidden in data. My journey combines rigorous mathematical foundations with practical machine learning applications.
               </p>
               <p className="mb-6">
                 From building regression & classification models to analyzing large datasets, I thrive on transforming raw data into actionable insights. My experience spans market research, ML development, and creating analytics dashboards that drive real business decisions.

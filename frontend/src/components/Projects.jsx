@@ -72,7 +72,7 @@ const Projects = ({ projects }) => {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors" />
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-slate-950/20 transition-colors" />
 
                     {/* Floating Icon */}
                     <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md p-2 rounded-lg border border-slate-700/50 text-cyan-400 shadow-lg">
@@ -90,7 +90,7 @@ const Projects = ({ projects }) => {
                       {project.title}
                     </h3>
 
-                    <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3 relative z-10 flex-grow">
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4 relative z-10 flex-grow">
                       {project.description}
                     </p>
 
@@ -137,7 +137,7 @@ const Projects = ({ projects }) => {
           <div className="mt-16 text-center">
             <Button
               className="bg-transparent border border-cyan-500/30 text-cyan-400 hover:bg-cyan-950/30 hover:border-cyan-400 px-8 py-6 rounded-lg font-mono text-sm transition-all"
-              onClick={() => window.open('https://github.com/bikramjit', '_blank')}
+              onClick={() => window.open('https://github.com/b4bikramjit?tab=repositories', '_blank')}
             >
               view_more_on_github()
             </Button>

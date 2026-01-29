@@ -56,9 +56,9 @@ PORTFOLIO_DATA = {
             "location": "Edmonton",
             "period": "Sept 2025 – Dec 2025",
             "achievements": [
-                "Authored market and competitive analysis reports across US, Canada, and India, evaluating 10+ AI sports broadcasting, analytics, and sales platforms",
-                "Designed data-driven marketing collateral for SportsStreamTV, supporting go-to-market strategy and improving pitch effectiveness by 30%",
-                "Optimized Facebook Meta ad performance for Toronto Raptors and Edmonton Oilers Cruise, increasing engagement by 25% and reducing CPC by 18%"
+                "Authored **market and competitive analysis reports** across US, Canada, and India, evaluating **10+ AI sports broadcasting**, analytics, and sales platforms",
+                "Designed **data-driven marketing collateral** for SportsStreamTV, supporting go-to-market strategy and improving pitch effectiveness by **30%**",
+                "Optimized **Facebook Meta ad performance** for Toronto Raptors and Edmonton Oilers Cruise, increasing engagement by **25%** and reducing CPC by **18%**"
             ]
         },
         {
@@ -68,9 +68,9 @@ PORTFOLIO_DATA = {
             "location": "Waterloo",
             "period": "Jan 2025 – April 2025",
             "achievements": [
-                "Analyzed website and Instagram performance across 5+ campaigns, tracking reach, impressions, CTR, and engagement rate to identify audience trends",
-                "Applied data-backed insights to optimize WCMS-managed pages (30+ pages) and digital content, improving accessibility and increasing average engagement by 20%",
-                "Translated engagement analytics into actionable recommendations for event and campaign strategy"
+                "Analyzed **website and Instagram performance** across 5+ campaigns, tracking reach, impressions, CTR, and engagement rate to identify audience trends",
+                "Applied **data-backed insights** to optimize **WCMS-managed pages** (30+ pages) and digital content, improving accessibility and increasing average engagement by **20%**",
+                "Translated **engagement analytics** into actionable recommendations for event and campaign strategy"
             ]
         },
         {
@@ -80,9 +80,9 @@ PORTFOLIO_DATA = {
             "location": "Waterloo",
             "period": "May 2024 – Sept 2024",
             "achievements": [
-                "Developed and evaluated ML classification models for underwater garbage detection, achieving 80%+ accuracy",
-                "Applied data analytics and automation to social media performance tracking, analyzing 10k+ user interactions",
-                "Improved engagement by 20% while reducing manual reporting effort by 40%"
+                "Developed and evaluated **ML classification models** for underwater garbage detection, achieving **80%+ accuracy**",
+                "Applied **data analytics and automation** to social media performance tracking, analyzing **10k+ user interactions**",
+                "Improved engagement by **20%** while reducing manual reporting effort by **40%**"
             ]
         }
     ],
@@ -96,7 +96,7 @@ PORTFOLIO_DATA = {
                 "accuracy": "74% R²",
                 "error": "25% MAPE"
             },
-            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+            "image": "/assets/projects/canada_house_price.png",
             "link": "https://predspriceca.onrender.com/",
             "github": "https://github.com/b4bikramjit/canada-house-price-prediction"
         },
@@ -109,7 +109,7 @@ PORTFOLIO_DATA = {
                 "dataPoints": "260K+",
                 "insights": "Team & Player Metrics"
             },
-            "image": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0",
+            "image": "/assets/projects/ipl_analytics.png",
             "link": "https://insightsipl.streamlit.app/",
             "github": "https://github.com/b4bikramjit/IPL-Analytics-Dashboard"
         },
@@ -122,7 +122,7 @@ PORTFOLIO_DATA = {
                 "accuracy": "98%",
                 "recall": "98%"
             },
-            "image": "https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91",
+            "image": "/assets/projects/phishing_detector.png",
             "link": "https://detectemail.streamlit.app/",
             "github": "https://github.com/b4bikramjit/Phishing-Email-Detection-System"
         },
@@ -135,7 +135,7 @@ PORTFOLIO_DATA = {
                 "accuracy": "87%",
                 "f1Score": "0.85"
             },
-            "image": "https://images.unsplash.com/photo-1762279389083-abf71f22d338",
+            "image": "/assets/projects/youtube_sentiment.png",
             "link": "https://ytsentimentanalyzer.streamlit.app/",
             "github": "https://github.com/b4bikramjit/youtube-sentiment-analyzer"
         },
@@ -148,21 +148,20 @@ PORTFOLIO_DATA = {
                 "size": "9K+ records",
                 "KPI's": "10"
             },
-            "image": "https://images.unsplash.com/photo-1759661990336-51bd4b951fea",
+            "image": "/assets/projects/superstore_sales.png",
             "link": "https://app.powerbi.com/groups/me/reports/6d4ec908-7e18-41cb-aebd-7d45e35c12c3/ReportSection?experience=power-bi",
             "github": "https://github.com/b4bikramjit/SuperStore-Sales-Analysis"
         },
         {
             "id": 6,
             "title": "Marketing Collateral",
-            "description": "Designed marketing brochure and authored market and competitive analysis reports evaluating 10+ AI sports broadcasting, analytics, and sales platforms.",
-            "technologies": ["AI-assisted Research", "Statistical Analysis", "Canva"]
-],
+            "description": "Designed marketing brochure and authored market and competitive analysis reports evaluating 10+ AI sports broadcasting, analytics, and sales platforms across US, Canada and India.",
+            "technologies": ["AI-assisted Research", "Statistical Analysis", "Canva"],
             "metrics": {
                 "papers": "2",
                 "horizon": "4 Months"
             },
-            "image": "https://images.pexels.com/photos/17483907/pexels-photo-17483907.png",
+            "image": "/assets/projects/marketing_research.png",
             "link": "https://drive.google.com/drive/folders/14P3Jobjm_cW6n8MSrbsl_QGh6C8dqABp?usp=sharing",
             "github": "https://github.com/b4bikramjit/Marketing-Collateral"
         }
