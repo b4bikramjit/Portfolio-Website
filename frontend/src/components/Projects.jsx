@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Github, Home, Trophy, Shield } from 'lucide-react';
+import { ExternalLink, Github, Home, Trophy, Shield, Youtube, ShoppingCart, FileText } from 'lucide-react';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -29,6 +29,9 @@ const Projects = ({ projects }) => {
     if (title.includes("House")) return <Home className="w-8 h-8 text-cyan-400" />;
     if (title.includes("IPL")) return <Trophy className="w-8 h-8 text-cyan-400" />;
     if (title.includes("Phishing")) return <Shield className="w-8 h-8 text-cyan-400" />;
+    if (title.includes("YouTube")) return <Youtube className="w-8 h-8 text-cyan-400" />;
+    if (title.includes("SuperStore")) return <ShoppingCart className="w-8 h-8 text-cyan-400" />;
+    if (title.includes("Marketing")) return <FileText className="w-8 h-8 text-cyan-400" />;
     return <Github className="w-8 h-8 text-cyan-400" />;
   };
 
