@@ -61,8 +61,8 @@ const Experience = ({ experience }) => {
                 <div className={`w-[calc(100%-5rem)] md:w-1/2 ml-20 md:ml-0 p-1 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <Card className="bg-slate-900/80 border-slate-800 p-6 hover:border-cyan-500/40 transition-all duration-300 relative overflow-hidden group/card backdrop-blur-sm">
                     {/* Glow Effect */}
-                    <div className="absolute top-0 right-0 p-4 opacity-100 transition-opacity">
-                      <Briefcase className="w-16 h-16 text-cyan-500 transform rotate-12" />
+                    <div className="absolute top-0 right-0 p-3 md:p-4 opacity-20 pointer-events-none">
+                      <Briefcase className="w-12 h-12 md:w-16 md:h-16 text-cyan-500 transform rotate-12" />
                     </div>
 
                     <div className="relative z-10">
