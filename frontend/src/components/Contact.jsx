@@ -6,11 +6,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from '../hooks/use-toast';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
 const Contact = ({ personal }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -38,11 +33,12 @@ const Contact = ({ personal }) => {
     }
 
     try {
-      const response = await axios.post(`${API}/contact`, formData);
+      // Simulate network request
+      await new Promise(resolve => setTimeout(resolve, 800));
 
       toast({
         title: "Message Sent!",
-        description: response.data.message || "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
 
       setFormData({ name: '', email: '', message: '' });

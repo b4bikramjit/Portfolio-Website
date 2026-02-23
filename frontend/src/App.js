@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { portfolioData } from './data/portfolioData';
 import ParticleBackground from './components/ParticleBackground';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -12,29 +12,19 @@ import Footer from './components/Footer';
 import { Toaster } from './components/ui/toaster';
 import './App.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
 function App() {
-  const [portfolioData, setPortfolioData] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPortfolioData = async () => {
-      try {
-        const response = await axios.get(`${API}/portfolio`);
-        setPortfolioData(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error('Error fetching portfolio data:', err);
-        const errorMessage = err.response?.data?.detail || err.message || 'Failed to load portfolio data';
-        setError(errorMessage);
-        setLoading(false);
-      }
-    };
+    // Simulate a brief loading time to keep the original feel, or just set it immediately.
+    // Adding a small delay for the particle background to initialize smoothly.
+    const timer = setTimeout(() => {
+      setData(portfolioData);
+      setLoading(false);
+    }, 500);
 
-    fetchPortfolioData();
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
@@ -48,17 +38,12 @@ function App() {
     );
   }
 
-  if (error || !portfolioData) {
+  if (!data) {
     return (
       <div className="App">
         <ParticleBackground />
         <div className="min-h-screen flex items-center justify-center">
-          <div className="text-red-500 text-xl mb-4">{error || 'No data available'}</div>
-          <div className="text-gray-400 text-sm font-mono bg-black/50 p-4 rounded">
-            <p>Debug Info:</p>
-            <p>Target URL: {API}/portfolio</p>
-            <p>Backend URL Env: {BACKEND_URL || 'Undefined'}</p>
-          </div>
+          <div className="text-red-500 text-xl mb-4">No data available</div>
         </div>
       </div>
     );
@@ -69,14 +54,14 @@ function App() {
       <ParticleBackground />
       <Header />
       <main>
-        <Hero personal={portfolioData.personal} />
-        <About about={portfolioData.about} />
-        <Skills skills={portfolioData.skills} />
-        <Experience experience={portfolioData.experience} />
-        <Projects projects={portfolioData.projects} />
-        <Contact personal={portfolioData.personal} />
+        <Hero personal={data.personal} />
+        <About about={data.about} />
+        <Skills skills={data.skills} />
+        <Experience experience={data.experience} />
+        <Projects projects={data.projects} />
+        <Contact personal={data.personal} />
       </main>
-      <Footer personal={portfolioData.personal} />
+      <Footer personal={data.personal} />
       <Toaster />
     </div>
   );

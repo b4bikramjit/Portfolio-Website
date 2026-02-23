@@ -1,19 +1,4 @@
-"""
-Seed database with initial portfolio data
-Run this script to initialize the database with portfolio content
-"""
-import asyncio
-from motor.motor_asyncio import AsyncIOMotorClient
-from datetime import datetime
-import os
-from dotenv import load_dotenv
-from pathlib import Path
-
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
-
-# Portfolio data to seed
-PORTFOLIO_DATA = {
+export const portfolioData = {
     "personal": {
         "name": "Bikramjit Singh",
         "title": "Data Analyst & Machine Learning Enthusiast",
@@ -27,10 +12,10 @@ PORTFOLIO_DATA = {
     "about": {
         "description": "Data Analyst with expertise in machine learning, statistical modeling, and business intelligence. Currently pursuing BMath Honors in Statistics at University of Waterloo. Passionate about leveraging data science to solve real-world problems and drive business decisions.",
         "highlights": [
-            {"label": "Projects Completed", "value": "15+"},
-            {"label": "ML Models Deployed", "value": "8"},
-            {"label": "Data Points Analyzed", "value": "500K+"},
-            {"label": "Accuracy Achieved", "value": "98%"}
+            { "label": "Projects Completed", "value": "15+" },
+            { "label": "ML Models Deployed", "value": "8" },
+            { "label": "Data Points Analyzed", "value": "500K+" },
+            { "label": "Accuracy Achieved", "value": "98%" }
         ]
     },
     "skills": {
@@ -45,7 +30,7 @@ PORTFOLIO_DATA = {
         "techniques": [
             "Data Preprocessing", "Exploratory Data Analysis",
             "Feature Engineering", "Regression Modeling",
-            "Classification Modeling", "Optimization",
+            "Classification Modeling", "Optimization"
         ]
     },
     "experience": [
@@ -54,7 +39,7 @@ PORTFOLIO_DATA = {
             "title": "AI and Marketing Intern",
             "company": "Da Silva International",
             "location": "Edmonton",
-            "period": "Sept 2025 – Dec 2025",
+            "period": "Sept 2025 \u2013 Dec 2025",
             "achievements": [
                 "Authored **market and competitive analysis reports** across US, Canada, and India, evaluating **10+ AI sports broadcasting**, analytics, and sales platforms",
                 "Designed **data-driven marketing collateral** for SportsStreamTV, supporting go-to-market strategy and improving pitch effectiveness by **30%**",
@@ -66,7 +51,7 @@ PORTFOLIO_DATA = {
             "title": "Marketing Coordinator",
             "company": "Faculty of Mathematics, University of Waterloo",
             "location": "Waterloo",
-            "period": "Jan 2025 – April 2025",
+            "period": "Jan 2025 \u2013 April 2025",
             "achievements": [
                 "Analyzed **website and Instagram performance** across 5+ campaigns, tracking reach, impressions, CTR, and engagement rate to identify audience trends",
                 "Applied **data-backed insights** to optimize **WCMS-managed pages** (30+ pages) and digital content, improving accessibility and increasing average engagement by **20%**",
@@ -78,7 +63,7 @@ PORTFOLIO_DATA = {
             "title": "Machine Learning Researcher",
             "company": "Sweat Free Apparel",
             "location": "Waterloo",
-            "period": "May 2024 – Sept 2024",
+            "period": "May 2024 \u2013 Sept 2024",
             "achievements": [
                 "Developed and evaluated **ML classification models** for underwater garbage detection, achieving **80%+ accuracy**",
                 "Applied **data analytics and automation** to social media performance tracking, analyzing **10k+ user interactions**",
@@ -90,10 +75,10 @@ PORTFOLIO_DATA = {
         {
             "id": 1,
             "title": "Canada House Price Predictor",
-            "description": "Developed and deployed a CatBoost-based house price prediction model with 74% R² and 25% MAPE using log-price modeling, location frequency encoding, and FastAPI inference.",
+            "description": "Developed and deployed a CatBoost-based house price prediction model with 74% R\u00b2 and 25% MAPE using log-price modeling, location frequency encoding, and FastAPI inference.",
             "technologies": ["Python", "CatBoost", "FastAPI", "Machine Learning"],
             "metrics": {
-                "accuracy": "74% R²",
+                "accuracy": "74% R\u00b2",
                 "error": "25% MAPE"
             },
             "image": "/assets/projects/canada_house_price.png",
@@ -170,61 +155,6 @@ PORTFOLIO_DATA = {
         "degree": "BMath Honors in Statistics",
         "school": "University of Waterloo",
         "location": "Waterloo, ON",
-        "period": "Sep 2022 – Present"
-    },
-    "updated_at": datetime.utcnow()
-}
-
-
-async def seed_database():
-    """Seed the database with initial portfolio data"""
-    
-    # Connect to MongoDB
-    mongo_url = os.environ.get('MONGO_URL', 'mock')
-    
-    import certifi
-    if mongo_url == 'mock':
-        from mock_db import MockClient
-        client = MockClient()
-        db = client[os.environ.get('DB_NAME', 'portfolio_db')]
-    else:
-        # Force SSL settings into the URL parameters
-        if '?' not in mongo_url:
-            mongo_url += '?tls=true&tlsAllowInvalidCertificates=true'
-        else:
-            mongo_url += '&tls=true&tlsAllowInvalidCertificates=true'
-            
-        client = AsyncIOMotorClient(mongo_url)
-        db = client[os.environ.get('DB_NAME', 'portfolio_db')]
-    
-    try:
-        # Check if portfolio already exists
-        existing = await db.portfolio.find_one()
-        
-        if existing:
-            print("Portfolio data already exists in database.")
-            # Auto-overwrite for automated setup
-            await db.portfolio.delete_many({})
-            print("Existing portfolio data deleted.")
-        
-        # Insert new portfolio data
-        result = await db.portfolio.insert_one(PORTFOLIO_DATA)
-        print(f"✅ Portfolio data seeded successfully! Document ID: {result.inserted_id}")
-        
-        # Show summary
-        portfolio = await db.portfolio.find_one()
-        print(f"\n📊 Portfolio Summary:")
-        print(f"  - Name: {portfolio['personal']['name']}")
-        print(f"  - Skills: {len(portfolio['skills']['programming'])} programming languages")
-        print(f"  - Experience: {len(portfolio['experience'])} positions")
-        print(f"  - Projects: {len(portfolio['projects'])} projects")
-        
-    except Exception as e:
-        print(f"❌ Error seeding database: {str(e)}")
-    finally:
-        client.close()
-
-
-if __name__ == "__main__":
-    print("🌱 Seeding Portfolio Database...\n")
-    asyncio.run(seed_database())
+        "period": "Sep 2022 \u2013 Present"
+    }
+};
