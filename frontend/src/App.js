@@ -7,6 +7,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import Storytelling from './components/Storytelling';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { Toaster } from './components/ui/toaster';
@@ -59,6 +60,7 @@ function App() {
         <Skills skills={data.skills} />
         <Experience experience={data.experience} />
         <Projects projects={data.projects} />
+        <Storytelling storytelling={data.storytelling} />
         <Contact personal={data.personal} />
       </main>
       <Footer personal={data.personal} />

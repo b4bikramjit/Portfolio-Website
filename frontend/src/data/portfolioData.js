@@ -156,5 +156,17 @@ export const portfolioData = {
         "school": "University of Waterloo",
         "location": "Waterloo, ON",
         "period": "Sep 2022 \u2013 Present"
+    },
+    "storytelling": {
+        "title": "Marketing & Analytics Data Visualization",
+        "description": "I specialize in translating data into visual narratives that drive business outcomes.",
+        "link": "https://b4bikram.my.canva.site/myportfolio",
+        "image": "/assets/projects/design_cover.png",
+        "skills": [
+            "Information Design",
+            "Marketing Collateral",
+            "Presentations",
+            "Brand Storytelling"
+        ]
     }
 };
